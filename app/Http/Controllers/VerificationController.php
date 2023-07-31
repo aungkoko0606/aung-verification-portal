@@ -16,16 +16,14 @@ class VerificationController extends Controller
         try {
             $verificationResult = $verificationService->verifyDataFromRequest($request);
         } catch (\Exception $e) {
-            return response()->json(
-                [
-                    'errors' => [
-                        'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
-                        'title' => 'Internal Server Error',
-                        'detail' => 'Please try again later'
-                    ]
-                ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
+            return new JsonResponse([
+                'errors' => [
+                    'status' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                    'title' => 'Internal Server Error',
+                    'detail' => 'Please try again later'
+                ]
+            ],
+                Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return new JsonResponse(['data' => $verificationResult], Response::HTTP_OK);

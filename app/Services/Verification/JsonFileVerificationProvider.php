@@ -84,10 +84,10 @@ class JsonFileVerificationProvider implements FileVerificationProvider
         return false;
     }
 
-    private function convertArrayToDotNotationKey(array $array, string $prefix = ''): array
+    private function convertArrayToDotNotationKey(array $dataArray, string $prefix = ''): array
     {
         $result = [];
-        foreach ($array as $key => $value) {
+        foreach ($dataArray as $key => $value) {
             $newKey = $prefix ? $prefix . '.' . $key : $key;
             if (is_array($value)) {
                 $result = array_merge($result, $this->convertArrayToDotNotationKey($value, $newKey));

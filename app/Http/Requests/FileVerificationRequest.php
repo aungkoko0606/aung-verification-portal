@@ -19,7 +19,7 @@ class FileVerificationRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'verification_file.required' => 'The verification_file field is required.',
